@@ -6,7 +6,6 @@ _Este es un proyecto académico del curso Coder PHP Django, incluye todas las fu
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
-Mira **Deployment** para conocer como desplegar el proyecto.
 
 
 ## Pre-requisitos 📋
@@ -114,7 +113,7 @@ _El proyecto se ha realizado utilizando:_
 
 _Aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-* **Fede** - *Código* - [Fede](https://github.com/)
+* **Fede** - *Código* - [Fede](https://github.com/fede1691)
 * **Nico** - *Código* - [Nico](https://github.com/)
 * **Eliud Bueno Moreno** - *Código* - [xe2mbe](https://github.com/xe2mbe)
  
