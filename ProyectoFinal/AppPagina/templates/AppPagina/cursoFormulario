@@ -3,7 +3,6 @@
 
 
 {% block contenidoQueCambia %}
-<a class="navbar-brand" href="#page-top">CURSO FORMULARIO</a>
 
 <form action="" method="POST"> {% csrf_token %}
 
