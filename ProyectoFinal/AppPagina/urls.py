@@ -6,4 +6,5 @@ urlpatterns = [
     path('saludo', views.saludo, name="Saludo"),
     path('cursoFormulario', views.cursoFormulario, name="CursoFormulario"),
     path('alumnoFormulario', views.alumnoFormulario, name="AlumnoFormulario"),
+    path('maestroFormulario', views.maestroFormulario, name="MaestroFormulario"),
 ]

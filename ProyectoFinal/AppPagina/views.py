@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.template import Template, context, loader
 
-from AppPagina.forms import CursoFormulario, AlumnoFormulario
-from AppPagina.models import Curso, Alumno
+from AppPagina.forms import CursoFormulario, AlumnoFormulario, MaestroFormulario
+from AppPagina.models import Curso, Alumno, Maestro
 
 def inicio(request):
 
@@ -46,7 +46,10 @@ def alumnoFormulario(request):
 
             informacion = formAlumno.cleaned_data
 
-            alumno = Alumno(nombre = informacion['nombre'], apellidos = informacion['apellidos'], nacimiento = informacion['nacimiento'], sexo = informacion['sexo'])
+            alumno = Alumno(nombre = informacion['nombre'], 
+                            apellidos = informacion['apellidos'], 
+                            nacimiento = informacion['nacimiento'], 
+                            sexo = informacion['sexo'])
 
             alumno.save()
 
@@ -56,3 +59,28 @@ def alumnoFormulario(request):
         formAlumno = AlumnoFormulario()
 
     return render(request, "AppPagina/alumnoFormulario", {"formAlumno":formAlumno})
+
+def maestroFormulario(request):
+    
+    if request.method == 'POST':
+
+        formMaestro = MaestroFormulario(request.POST)
+
+        if formMaestro.is_valid():
+
+            informacion = formMaestro.cleaned_data
+
+            maestro = Maestro(nombre = informacion['nombre'], 
+                              apellidos = informacion['apellidos'], 
+                              nacimiento = informacion['nacimiento'], 
+                              sexo = informacion['sexo'],
+                              titulo = informacion['titulo'])
+
+            maestro.save()
+
+            return render(request, "AppPagina/inicio.html")
+    else:
+
+        formMaestro = MaestroFormulario()
+
+    return render(request, "AppPagina/maestroFormulario", {"formMaestro":formMaestro})
