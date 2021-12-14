@@ -78,6 +78,31 @@ ProyectoFinal/AppPagina/models.py
 _Tarea 2. Validar models.py: Observa que existen al menos 3 modelos distintos de datos_
 
 ```
+from django.db import models
+
+
+# Create your models here.
+
+sex = (
+        ('H', 'Hombre'), 
+        ('M', 'Mujer')
+        )
+
+tit = (
+        ('Lic', 'Licenciatura'), 
+        ('Mae', 'Maestría'),
+        ('Doc', 'Doctorado'),
+        )
+
+class Sexo(models.Model):
+
+    sexo = models.CharField(max_length=40,choices= sex)
+    
+class Titulo(models.Model):
+
+    titulo = models.CharField(max_length=40,choices= tit)
+
+
 class Curso(models.Model):
     
     nombre = models.CharField(max_length=40)
@@ -86,6 +111,29 @@ class Curso(models.Model):
 
     def __str__(self) -> str:
         return (f"Nombre: {self.nombre} /// COMISION: {self.comision}" )
+    
+
+
+class Alumno(models.Model):
+    nombre = models.CharField(max_length=40)
+    apellidos = models.CharField(max_length=150)
+    nacimiento = models.DateField(auto_now=False, auto_now_add=False)
+    sexo = models.CharField(max_length=40)
+
+    def __str__(self) -> str:
+        return (f"Nombre: {self.nombre} /// Apellidos: {self.apellidos}" )
+    
+
+class Maestro(models.Model):
+    nombre = models.CharField(max_length=40)
+    apellidos = models.CharField(max_length=40)
+    nacimiento = models.DateField(auto_now=False, auto_now_add=False)
+    sexo = models.CharField(max_length=40)
+    titulo = models.CharField(max_length=40)
+
+
+    def __str__(self) -> str:
+        return (f"Nombre: {self.nombre} /// Apellidos: {self.apellidos} /// Titulo:{self.titulo}" )
 ```
 ### 3) Formulario - Validación ⌨️
 
@@ -98,8 +146,28 @@ http://127.0.0.1:8000/AppPagina/cursoFormulario
 _Tarea 2. Validar formulario: Ingresa los datos solicitados del formulario_
 
 ```
-    nombre = models.CharField(max_length=40)
-    comision = models.IntegerField()
+from django import forms
+from AppPagina.models import sex, tit
+
+YEARS= [x for x in range(1910,2021)]
+
+class CursoFormulario(forms.Form):
+
+    nombre = forms.CharField()
+    comision = forms.IntegerField()
+
+class AlumnoFormulario(forms.Form):
+    nombre = forms.CharField()
+    apellidos = forms.CharField()
+    nacimiento = forms.DateField(label='Fecha de Nacimiento', widget=forms.SelectDateWidget(years=YEARS))       
+    sexo = forms.ChoiceField(choices=sex)
+    
+class MaestroFormulario(forms.Form):
+    nombre = forms.CharField()
+    apellidos = forms.CharField()
+    nacimiento = forms.DateField(label='Fecha de Nacimiento', widget=forms.SelectDateWidget(years=YEARS))       
+    sexo = forms.ChoiceField(choices=sex)
+    titulo = forms.ChoiceField(choices=tit)
 ```
 
 ## Construido con 🛠️
