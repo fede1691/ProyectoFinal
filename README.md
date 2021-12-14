@@ -113,8 +113,8 @@ _El proyecto se ha realizado utilizando:_
 
 _Aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-* **Fede** - *Código* - [Fede](https://github.com/fede1691)
-* **Nico** - *Código* - [Nico](https://github.com/)
+* **Federico Gómez Catuogno** - *Código* - [Fede](https://github.com/fede1691)
+* **Diego Nicolas Dasanbiagio** - *Código* - [Nico](https://github.com/)
 * **Eliud Bueno Moreno** - *Código* - [xe2mbe](https://github.com/xe2mbe)
  
 
