@@ -8,10 +8,10 @@
 
     <div class="container d-flex align-items-center flex-column">
         <table>
-
-            {{ miFormulario.as_table }}
+    
+            {{ formAlumno.as_table }}
         
         </table>
         <input type="submit", value="ENVIAR">
-    </div>   
+    </div>  
 {% endblock %}
