@@ -30,7 +30,7 @@ class Curso(models.Model):
 
 
     def __str__(self) -> str:
-        return (f"Nombre: {self.nombre} /// COMISION: {self.comision}" )
+        return (f"Nombre del Curso: {self.nombre} Comision: {self.comision}" )
     
 
 
@@ -41,7 +41,7 @@ class Alumno(models.Model):
     sexo = models.CharField(max_length=40)
 
     def __str__(self) -> str:
-        return (f"Nombre: {self.nombre} /// Apellidos: {self.apellidos}" )
+        return (f"Nombre del Alumno: {self.nombre} Apellidos: {self.apellidos} Fecha Nacimiento: {self.nacimiento} Sexo: {self.sexo}" )
     
 
 class Maestro(models.Model):
