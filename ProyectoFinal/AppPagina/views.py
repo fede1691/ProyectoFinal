@@ -10,7 +10,6 @@ def inicio(request):
 
     return render(request, "AppPagina/inicio.html")
 
-
 def saludo(request):
 
     return render(request, "AppPagina/saludo.html")
@@ -84,3 +83,27 @@ def maestroFormulario(request):
         formMaestro = MaestroFormulario()
 
     return render(request, "AppPagina/maestroFormulario", {"formMaestro":formMaestro})
+
+########################### FUNCIONES PARA LEER MODELS#############################################
+
+def leerCursos(request):
+ 
+    cursos = Curso.objects.all() # Trae todos los cursos y todos sus objetos.   
+ 
+    contexto = {"cursos":cursos}
+    
+    return render(request, "AppPagina/leerCursos", contexto)
+
+########################### FUNCIONES PARA BORRAR DATOS DE MODELS#############################################
+
+def eliminarCursos(request, curso_nombre):
+ 
+    curso = Curso.objects.get(nombre=curso_nombre) # Trae todos los cursos y todos sus objetos.   
+    
+    curso.delete() 
+    
+    cursos = Curso.objects.all()
+   
+    contexto = {"cursos":cursos}
+    
+    return render(request, "AppPagina/leerCursos", contexto)
