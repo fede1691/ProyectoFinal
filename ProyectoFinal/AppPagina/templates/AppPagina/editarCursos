@@ -28,12 +28,7 @@
 
 </div>
 
-<br>
-</br>
-<a class="btn" href="{% url 'CursoFormulario'%}"> Agregar Curso </a>
 
 </body>
 
 {% endblock %}
-
-

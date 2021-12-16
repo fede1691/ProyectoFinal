@@ -107,3 +107,29 @@ def eliminarCursos(request, curso_nombre):
     contexto = {"cursos":cursos}
     
     return render(request, "AppPagina/leerCursos", contexto)
+
+########################### FUNCIONES PARA EDITAR DATOS DE MODELS#############################################
+
+def editarCursos(request, curso_nombre):
+ 
+    curso = Curso.objects.get(nombre=curso_nombre) # Trae todos los cursos y todos sus objetos.   
+    
+    if request.method == 'POST':
+
+        miFormulario = CursoFormulario(request.POST)
+
+        if miFormulario.is_valid():
+
+            informacion = miFormulario.cleaned_data
+
+            curso.nombre = informacion['nombre'], 
+            curso.comision = informacion['comision']
+
+            curso.save()
+
+            return render(request, "AppPagina/inicio.html")
+    else:
+
+        miFormulario = CursoFormulario(initial={'nombre':curso.nombre, 'comision':curso.comision})
+
+    return render(request, "AppPagina/editarCursos", {"miFormulario":miFormulario, "curso_nombre":curso_nombre})

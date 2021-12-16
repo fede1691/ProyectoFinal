@@ -15,9 +15,9 @@
         <input type="submit", value="ENVIAR" >
 
  
-        <a class="btn" href="{% url 'LeerCursos'%}"> Listar Cursos </a>
-        <br>
         <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a>
+        <br>
+        {% comment %} <a class="btn" href="{% url 'EditarCursos'%}"> Editar Cursos </a> {% endcomment %}
    
     </div>  
  
