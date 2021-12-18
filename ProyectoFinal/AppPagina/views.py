@@ -161,3 +161,26 @@ class ActualizaCursos(UpdateView):
 class BorrarCursos(DeleteView):
     model = Curso
     success_url = "/AppPagina/curso/lista"
+
+######################## CBVs ALUMNO ##################################
+class ListaAlumno(ListView):
+    model = Alumno
+    template_name = "AppPagina/alumno_list"
+
+class DetalleAlumno(DetailView):
+    model = Alumno
+    template_name = "AppPagina/alumno_detalle"
+    
+class NuevoAlumno(CreateView):
+    model = Alumno
+    success_url = "/AppPagina/alumno/lista"
+    fields = ['nombre', 'apellidos', 'nacimiento', 'sexo']
+
+class ActualizaAlumno(UpdateView):
+    model = Alumno
+    success_url = "/AppPagina/alumno/lista"
+    fields = ['nombre', 'apellidos', 'nacimiento', 'sexo']
+    
+class BorrarAlumno(DeleteView):
+    model = Alumno
+    success_url = "/AppPagina/alumno/lista"

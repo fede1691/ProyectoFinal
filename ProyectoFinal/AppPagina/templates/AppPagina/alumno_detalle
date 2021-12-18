@@ -1,0 +1,29 @@
+{% extends "AppPagina/padre.html" %}
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+
+    <body>
+        <!-- Navigation-->
+    </div>
+
+        <h2> Detalle de Alumnos </h2>
+        <ul>
+
+            <p>ID: <i> {{alumno.id }} </i> </p>   
+            <p>Nombre: <i> {{alumno.nombre }} </i> </p>
+            <p>Apellidos: <i> {{ alumno.apellidos }} </i> </p>
+            <p>Fecha de Nacimiento: <i> {{ alumno.nacimiento }} </i> </p>
+            <p>Sexo: <i> {{ alumno.sexo }} </i> </p>                                   
+    
+        </ul>
+    </div>
+
+    </body>
+    <a class="btn" href="{% url 'ListAlumno'%}">  Mostrar Cursos </a> 
+    </html>
+
+{% endblock %}
+
