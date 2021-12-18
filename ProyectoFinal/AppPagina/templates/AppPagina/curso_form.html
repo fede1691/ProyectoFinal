@@ -9,19 +9,20 @@
     <div class="container d-flex align-items-center flex-column">
         <table>
 
-            {{ miFormulario.as_table }}
+            {{ form.as_p }}
         
         </table>
         <input type="submit", value="ENVIAR" >
 
- 
-        <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a>
+{% comment %}  
+        <a class="btn" href="{% url 'Detail'%}"> Buscar Cursos </a>
         <br>
+        <a class="btn" href="{% url 'New'%}">  Cursos </a> {% endcomment %}
         {% comment %} <a class="btn" href="{% url 'EditarCursos'%}"> Editar Cursos </a> {% endcomment %}
    
     </div>  
  
- 
+    <a class="btn" href="{% url 'List'%}">  Mostrar Cursos </a> 
 
 
  
