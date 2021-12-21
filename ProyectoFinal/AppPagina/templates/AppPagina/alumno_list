@@ -22,7 +22,7 @@
                {% comment %}  <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a> {% endcomment %}
 
            
-                <a href="{% url 'DetailAlumno' alumno.id%}" style="color:black;" > Detalle </a> 
+                <a href="{% url 'DetailAlumno' alumno.id%}" style="color:black;" > Mas detalles </a> 
          
                 &nbsp;&nbsp;
       

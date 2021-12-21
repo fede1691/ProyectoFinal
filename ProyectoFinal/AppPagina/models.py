@@ -53,4 +53,4 @@ class Maestro(models.Model):
 
 
     def __str__(self) -> str:
-        return (f"Nombre: {self.nombre} /// Apellidos: {self.apellidos} /// Titulo:{self.titulo}" )
+        return (f"Nombre: {self.nombre} /// Apellidos: {self.apellidos} /// Nacimiento: {self.nacimiento} Sexo: {self.sexo} /// Titulo:{self.titulo}" )
