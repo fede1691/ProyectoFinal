@@ -9,6 +9,7 @@ from django.views.generic import ListView # Importamos la librerias para poder m
 from django.views.generic.detail import DetailView  # Importamos la librerias para poder manejar las CBV
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
+
 def inicio(request):
 
     return render(request, "AppPagina/inicio.html")
@@ -97,6 +98,14 @@ def leerCursos(request):
     
     return render(request, "AppPagina/leerCursos", contexto)
 
+def leerMaestros(request):
+ 
+    maestros = Maestro.objects.all() # Trae todos los cursos y todos sus objetos.   
+ 
+    contexto = {"maestros":maestros}
+    
+    return render(request, "AppPagina/leerMaestros", contexto)
+
 ########################### FUNCIONES PARA BORRAR DATOS DE MODELS#############################################
 
 def eliminarCursos(request, curso_nombre):
@@ -184,3 +193,27 @@ class ActualizaAlumno(UpdateView):
 class BorrarAlumno(DeleteView):
     model = Alumno
     success_url = "/AppPagina/alumno/lista"
+
+######################## CBVs MAESTRO ##################################
+
+class ListaMaestro(ListView):
+    model = Maestro
+    template_name = "AppPagina/maestro_list"
+
+class DetalleMaestro(DetailView):
+    model = Maestro
+    template_name = "AppPagina/maestro_detalle"
+    
+class NuevoMaestro(CreateView):
+    model = Maestro
+    success_url = "/AppPagina/maestro/lista"
+    fields = ['nombre', 'apellidos', 'nacimiento', 'sexo', 'titulo']
+
+class ActualizaMaestro(UpdateView):
+    model = Maestro
+    success_url = "/AppPagina/maestro/lista"
+    fields = ['nombre', 'apellidos', 'nacimiento', 'sexo', 'titulo']
+    
+class BorrarMaestro(DeleteView):
+    model = Maestro
+    success_url = "/AppPagina/maestro/lista"

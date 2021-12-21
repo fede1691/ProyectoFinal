@@ -1,0 +1,31 @@
+{% extends "AppPagina/padre.html" %}
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+
+    <body>
+        <!-- Navigation-->
+    </div>
+
+        <h2> Detalle de Maestros </h2>
+        <ul>
+
+            <p>ID: <i> {{maestro.id }} </i> </p>   
+            <p>Nombre: <i> {{maestro.nombre }} </i> </p>
+            <p>Apellidos: <i> {{ maestro.apellidos }} </i> </p>
+            <p>Fecha de Nacimiento: <i> {{ maestro.nacimiento }} </i> </p>
+            <p>Sexo: <i> {{ maestro.sexo }} </i> </p>                                   
+            <p>Titulo: <i> {{ maestro.titulo }} </i> </p> 
+
+        </ul>
+    </div>
+        <a class="btn" href="{% url 'ListMaestro'%}">  Mostrar Maestros </a>
+    
+    </body>
+     
+    </html>
+
+{% endblock %}
+

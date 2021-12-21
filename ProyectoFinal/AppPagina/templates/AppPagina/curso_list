@@ -21,15 +21,15 @@
                {% comment %}  <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a> {% endcomment %}
 
                <button>
-                <a href="{% url 'Detail' curso.id%}"> Detalle-CBV </a>
+                <a href="{% url 'Detail' curso.id%}"> Detalle del curso </a>
                 </button>
 
                 <button>
-                <a href= "{% url 'Delete' curso.id%}" > Eliminar-CBV </a>
+                <a href= "{% url 'Delete' curso.id%}" > Eliminar curso </a>
                 
                 </button>
                 <button>
-                <a href="{% url 'Edit' curso.id%}"> Editar-CBV </a>
+                <a href="{% url 'Edit' curso.id%}"> Editar curso </a>
                 </button>
                 
         
