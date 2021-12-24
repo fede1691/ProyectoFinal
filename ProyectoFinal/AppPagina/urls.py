@@ -9,6 +9,9 @@ urlpatterns = [
     path('cursoFormulario', views.cursoFormulario, name="CursoFormulario"),
     path('alumnoFormulario', views.alumnoFormulario, name="AlumnoFormulario"),
     path('maestroFormulario', views.maestroFormulario, name="MaestroFormulario"),
+    path('busquedaAlumno', views.busquedaAlumno, name="BusquedaAlumno"),
+    path('buscar/', views.buscar, name="Buscar"),
+
 
     ##CURSOS
     path('leerCursos', views.leerCursos, name="LeerCursos"),

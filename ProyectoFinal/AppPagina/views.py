@@ -146,8 +146,28 @@ def editarCursos(request, curso_nombre):
 
     return render(request, "AppPagina/editarCursos", {"miFormulario":miFormulario, "curso_nombre":curso_nombre})
 
+
 ######################## CLASES BASADAS EN VISTAS ---CBV---  ############################################################
 
+def busquedaAlumno(request):
+
+    return render (request, "AppPagina/busquedaAlumno.html")
+
+def buscar(request):
+
+    if request.GET['nombre']:
+
+        nombre = request.GET['nombre']
+        alumnos = Alumno.objects.filter(nombre__icontains = nombre)
+
+        return render(request, "AppPagina/resultadoBusquedaAlumnos.html", {"alumnos": alumnos, "nombre": nombre})
+
+    else:
+
+        respuesta = "No enviaste datos para buscar"    
+
+    return HttpResponse(respuesta)
+    
 ######################## CBVs CURSO ##################################
 class ListaCursos(ListView):
     model = Curso
