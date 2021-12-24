@@ -9,7 +9,7 @@
     <div class="container d-flex align-items-center flex-column">
         <table>
     
-            {{ formAlumno.as_table }}
+            {{ formAlumno }}
         
         </table>
         <input type="submit", value="ENVIAR">
