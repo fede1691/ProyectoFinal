@@ -3953,7 +3953,7 @@ textarea.form-control-lg {
   }
 }
 .nav-link:hover, .nav-link:focus {
-  color: #15967d;
+  color: #25066e;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -11517,4 +11517,16 @@ html {
 
 .copyright {
   background-color: #1a252f;
+}
+
+.boton {
+  border: 1px solid #000 !important; /*anchura, estilo y color borde*/
+  padding: 10px !important; /*espacio alrededor texto*/
+  background-color: #000 !important; /*color botón*/
+  color: #ffffff; /*color texto*/
+  text-decoration: none !important; /*decoración texto*/
+  text-transform: uppercase !important; /*capitalización texto*/
+  font-family: 'Helvetica', sans-serif !important; /*tipografía texto*/
+  border-radius: 50px !important; /*bordes redondos*/
+  margin: 5px;
 }
