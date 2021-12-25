@@ -1,0 +1,27 @@
+{% extends "AppPagina/padre.html" %}
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+
+<body>
+       
+         
+        </div>
+
+            <h2 style="font-size: large; padding: auto; padding-top: 2rem;"> Detalle del curso : {{ curso.nombre }} </h2>
+            <ul>
+
+               <p>Camada: <i> {{ curso.comision }} </i> </p>                             
+    
+            </ul>
+        </div>
+        
+        
+</body>       
+    <br><br>
+<a class="boton" href="{% url 'ListaCursos'%}">  Mostrar Cursos </a> 
+
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends "AppPagina/padre.html" %}
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    <h1>RESULTADO DE LA BUSQUEDA</h1>
+
+    {% if alumnos %}
+
+        <ul>
+            {% for alumno in alumnos %}
+             ---------------------------   
+            <li>Nombre: {{alumno.nombre}}</li>
+            <li>Apellido: {{alumno.apellidos}}</li>
+            <li>Fecha de Nacimiento: {{alumno.nacimiento}}</li>
+            <li>Sexo: {{alumno.sexo}}</li>
+            <br>
+          
+            {% endfor%}
+        </ul>
+    
+    
+         <a class ="boton" href="{% url 'Inicio' %}" > Regresar al Inicio</a>
+         <a class ="boton" href="{% url 'BusquedaAlumno' %}" > Regresar a busqueda</a>
+
+    {%endif %}
+
+{% endblock %}

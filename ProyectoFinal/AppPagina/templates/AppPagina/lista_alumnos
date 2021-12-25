@@ -39,7 +39,7 @@
             {% endfor %}
         </ul>
     </div>
-    <a class="btn" href="{% url 'NewAlumno'%}">  Nuevo Alumno </a> 
+    <a class="btn" href="{% url 'CrearAlumno'%}">  Nuevo Alumno </a> 
     </body>
     </html>
 
