@@ -14,16 +14,12 @@
         </table>
         <input type="submit", value="ENVIAR" >
 
-{% comment %}  
-        <a class="btn" href="{% url 'Detail'%}"> Buscar Cursos </a>
-        <br>
-        <a class="btn" href="{% url 'CrearCurso'%}">  Cursos </a> {% endcomment %}
-        {% comment %} <a class="btn" href="{% url 'EditarCursos'%}"> Editar Cursos </a> {% endcomment %}
    
     </div>  
     <br>
-    <a class="boton" href="{% url 'ListaCursos'%}">  Mostrar Cursos </a> 
-
+    <a href="{% url 'ListaCursos'%}">
+      <input type="button" value=" Mostrar Cursos"/>
+    </a>
 
  
 {% endblock %}

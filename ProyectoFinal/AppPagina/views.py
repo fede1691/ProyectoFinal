@@ -18,24 +18,6 @@ def saludo(request):
 
     return render(request, "AppPagina/saludo.html")
 
-########################### FUNCIONES PARA LEER MODELS#############################################
-
-def leerCursos(request):
- 
-    cursos = Curso.objects.all() # Trae todos los cursos y todos sus objetos.   
- 
-    contexto = {"cursos":cursos}
-    
-    return render(request, "AppPagina/leerCursos", contexto)
-
-def leerMaestros(request):
- 
-    maestros = Maestro.objects.all() # Trae todos los cursos y todos sus objetos.   
- 
-    contexto = {"maestros":maestros}
-    
-    return render(request, "AppPagina/leerMaestros", contexto)
-
 ########################### FUNCIONES PARA BORRAR DATOS DE MODELS#############################################
 
 def eliminarCursos(request, curso_nombre):
@@ -52,7 +34,7 @@ def eliminarCursos(request, curso_nombre):
 
 ########################### FUNCIONES PARA EDITAR DATOS DE MODELS#############################################
 
-def editarCursos(request, curso_nombre):
+""" def editarCursos(request, curso_nombre):
  
     curso = Curso.objects.get(nombre=curso_nombre) # Trae todos los cursos y todos sus objetos.   
     
@@ -74,10 +56,10 @@ def editarCursos(request, curso_nombre):
 
         miFormulario = CursoFormulario(initial={'nombre':curso.nombre, 'comision':curso.comision})
 
-    return render(request, "AppPagina/editarCursos", {"miFormulario":miFormulario, "curso_nombre":curso_nombre})
+    return render(request, "AppPagina/editarCursos", {"miFormulario":miFormulario, "curso_nombre":curso_nombre}) """
 
+########## FUNCIONES DE BUSQUEDA ##################
 
-######################## CLASES BASADAS EN VISTAS ---CBV---  ############################################################
 
 def busquedaAlumno(request):
 
@@ -88,17 +70,22 @@ def buscar(request):
     if request.GET['nombre']:
 
         nombre = request.GET['nombre']
-        alumnos = Alumno.objects.filter(nombre__icontains = nombre)
-
+        alumnos = Alumno.objects.filter(nombre=nombre)
+        error = ''
         return render(request, "AppPagina/resultadoBusquedaAlumnos.html", {"alumnos": alumnos, "nombre": nombre})
-
+    
     else:
 
-        respuesta = "No enviaste datos para buscar"    
+        error = "El alumno no se encuentra en la lista o no enviaste datos para buscar"    
 
-    return HttpResponse(respuesta)
-    
+    return render(request, "AppPagina/busquedaAlumno.html" ,{'error': error})
+
+
+
+######################## CLASES BASADAS EN VISTAS ---CBV---  ############################################################  
+
 ######################## CBVs CURSO ##################################
+
 class ListaCursos(ListView):
     model = Curso
     template_name = "AppPagina/lista_cursos"

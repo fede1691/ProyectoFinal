@@ -14,32 +14,36 @@
 
             {% for alumno in object_list %}
 
-
-               <p>Nombre Completo: {{ alumno.nombre }} {{ alumno.apellidos }} </p> 
+            
+            &nbsp;&nbsp; <p>Nombre Completo: {{ alumno.nombre }} {{ alumno.apellidos }} </p> 
            
             
-                   {% comment %}  <a href="{% url 'ListaCursos' alumno.id %}">Ver</a> {% endcomment %}
+               {% comment %}  <a href="{% url 'ListaCursos' alumno.id %}">Ver</a> {% endcomment %}
                {% comment %}  <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a> {% endcomment %}
 
-           
-                <a href="{% url 'DetailAlumno' alumno.id%}" style="color:black;" > Mas detalles </a> 
-         
-                &nbsp;&nbsp;
-      
-                <a href= "{% url 'DeleteAlumno' alumno.id%}" style="color:black;" > Eliminar </a>
-            
-                &nbsp;&nbsp;
-   
-                <a href="{% url 'EditAlumno' alumno.id%}" style="color:black;" >Editar </a>
-
+                 
+                <a href="{% url 'DetalleAlumno' alumno.id%}">
+                  <input type="button" value="Mas detalles" />
+                </a>
                 
-        
-
+                
+                <a href="{% url 'BorrarAlumno' alumno.id%}">
+                    <input type="button" value="Eliminar" />
+                </a>
+                            
+                
+                <a href="{% url 'EditarAlumno' alumno.id%}">
+                  <input type="button" value="Editar" />
+                </a>       
             
+                <br>----------------------------------------------------------
             {% endfor %}
         </ul>
+        <br>
     </div>
-    <a class="btn" href="{% url 'CrearAlumno'%}">  Nuevo Alumno </a> 
+      <a href="{% url 'CrearAlumno'%}">
+        <input type="button" value="Nuevo Alumno"/>
+      </a>    
     </body>
     </html>
 

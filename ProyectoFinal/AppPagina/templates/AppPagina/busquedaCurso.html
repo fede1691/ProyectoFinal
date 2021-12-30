@@ -1,0 +1,24 @@
+{% extends "AppPagina/busquedaAlumno.html" %}
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+
+    <h1>Busqueda Curso!!!</h1>
+
+
+<form action="/AppPagina/buscar/" method="GET">
+
+    <input type="text" name="nombre" id="nombre">
+
+    <input type="submit" value="Buscar">
+
+
+</form>
+<br>
+    {% if error %}
+      <p>{{ error }}</p>
+    {% endif %}
+    
+{% endblock %}

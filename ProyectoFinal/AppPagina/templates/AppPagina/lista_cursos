@@ -20,18 +20,27 @@
                    {% comment %}  <a href="{% url 'ListaCursos' curso.id %}">Ver</a> {% endcomment %}
                {% comment %}  <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a> {% endcomment %}
 
-               
-                <a class="boton" href="{% url 'DetalleCursos' curso.id%}"> Detalle del curso </a>
-                                
-                <a class="boton" href= "{% url 'BorrarCursos' curso.id%}" > Eliminar curso </a>
-                                                
-                <a class="boton" href="{% url 'EditarCursos' curso.id%}"> Editar curso </a>
-                        
-            
+                <a href="{% url 'DetalleCursos' curso.id%}">
+                  <input type="button" value="Detalle del curso" />
+                </a>
+                
+                <a href="{% url 'BorrarCursos' curso.id%}">
+                  <input type="button" value="Eliminar curso" />
+                </a>
+                
+                <a href="{% url 'EditarCursos' curso.id%}">
+                  <input type="button" value=" Editar curso" />
+                </a>                               
+                                   
+                <br>----------------------------------------------------------
             {% endfor %}
         </ul>
     </div>
-    <a class="btn" href="{% url 'CrearCurso'%}">  Nuevo Curso </a> 
+    <br>    
+    <a href="{% url 'CrearCurso' %}">
+      <input type="button" value=" Nuevo Curso" />
+    </a> 
+
     </body>
     </html>
 

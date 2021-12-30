@@ -1,4 +1,4 @@
-{% extends "AppPagina/padre.html" %}
+{% extends "AppPagina/alumno_form.html" %}
 {% load static %}
 
 
@@ -14,15 +14,12 @@
         </table>
         <input type="submit", value="ENVIAR" >
 
-        {% comment %}  
-        <a class="btn" href="{% url 'Detail'%}"> Buscar Maestro </a>
-        <br>
-        <a class="btn" href="{% url 'New'%}">  Cursos </a>
-        <a class="btn" href="{% url 'EditarCursos'%}"> Editar Cursos </a> 
-        {% endcomment %}
     </div>  
     <br>
-    <a class="boton" href="{% url 'ListMaestro'%}">  Mostrar Maestros </a>  
+    <a href="{% url 'ListMaestro'%}">
+      <input type="button" value=" Mostrar Maestros"/>
+    </a>
+     
 
 
  

@@ -14,32 +14,36 @@
 
             {% for maestro in object_list %}
 
-
+               
                <p>Nombre Completo: {{ maestro.nombre }} {{ maestro.apellidos }} </p> 
            
             
                {% comment %}  <a href="{% url 'ListaCursos' alumno.id %}">Ver</a> {% endcomment %}
                {% comment %}  <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a> {% endcomment %}
                
-           
-                <a href="{% url 'DetailMaestro' maestro.id%}" style="color:black;" > Mas detalles </a> 
-         
-                &nbsp;&nbsp;
-      
-                <a href= "{% url 'DeleteMaestro' maestro.id%}" style="color:black;" > Eliminar </a>
-            
-                &nbsp;&nbsp;
-   
-                <a href="{% url 'EditMaestro' maestro.id%}" style="color:black;" >Editar </a>
-
-                
-        
-
-                
+               <a href="{% url 'DetailMaestro' maestro.id%}">
+                <input type="button" value="Mas detalles" />
+              </a>
+              
+              
+              <a href="{% url 'DeleteMaestro' maestro.id%}">
+                  <input type="button" value="Eliminar" />
+              </a>
+                          
+              
+              <a href="{% url 'EditMaestro' maestro.id%}">
+                <input type="button" value="Editar" />
+              </a>
+              <br>----------------------------------------------------------
             {% endfor %}
+            
         </ul>
     </div>
-    <a class="btn" href="{% url 'NewMaestro'%}">  Nuevo Maestro </a> 
+
+    <a href="{% url 'NewMaestro'%}">
+      <input type="button" value="Nuevo Maestro"/>
+    <a> 
+     
     </body>
     </html>
 
