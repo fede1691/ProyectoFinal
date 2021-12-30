@@ -11520,13 +11520,13 @@ html {
 }
 
 .boton {
-  border: 1px solid #000 !important; /*anchura, estilo y color borde*/
-  padding: 10px !important; /*espacio alrededor texto*/
-  background-color: #000 !important; /*color botón*/
-  color: #ffffff; /*color texto*/
+  border: 2px solid #000 !important; /*anchura, estilo y color borde*/
+  padding: 7px !important; /*espacio alrededor texto*/
+  background-color: #fff !important; /*color botón*/
+  color: black; /*color texto*/
   text-decoration: none !important; /*decoración texto*/
   text-transform: uppercase !important; /*capitalización texto*/
   font-family: 'Helvetica', sans-serif !important; /*tipografía texto*/
-  border-radius: 50px !important; /*bordes redondos*/
-  margin: 5px;
+  border-radius: 20px !important; /*bordes redondos*/
+  margin: auto;
 }

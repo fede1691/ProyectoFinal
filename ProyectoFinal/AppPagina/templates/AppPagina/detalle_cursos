@@ -21,7 +21,11 @@
         
 </body>       
     <br><br>
-<a class="boton" href="{% url 'ListaCursos'%}">  Mostrar Cursos </a> 
+
+<a href="{% url 'ListaCursos'%}">
+  <input type="button" value="Mostrar Cursos"/>
+</a> 
+ 
 
 {% endblock %}
 

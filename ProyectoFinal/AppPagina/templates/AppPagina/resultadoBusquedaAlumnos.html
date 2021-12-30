@@ -20,9 +20,13 @@
             {% endfor%}
         </ul>
     
-    
-         <a class ="boton" href="{% url 'Inicio' %}" > Regresar al Inicio</a>
-         <a class ="boton" href="{% url 'BusquedaAlumno' %}" > Regresar a busqueda</a>
+        <a href="{% url 'Inicio' %}">
+          <input type="button" value="Regresar al Inicio"/>
+        </a>
+        
+        <a href="{% url 'BusquedaAlumno' %}">
+          <input type="button" value="Regresar a busqueda"/>
+        </a>
 
     {%endif %}
 

@@ -7,14 +7,22 @@
 
     <h1>Busqueda Alumnos!!!</h1>
 
+    
 
-<form action="/AppPagina/buscar/" method="GET">
+  <form action="/AppPagina/buscar/" method="GET">
 
     <input type="text" name="nombre" id="nombre">
 
     <input type="submit" value="Buscar">
 
-
-</form>
+  </form>
+  <br>
+    {% if error %}
+      <p>{{ error }}</p>
+    {% endif %}
+  
+  <a href="{% url 'CrearAlumno'%}">
+    <input type="button" value="Volver"/>
+  </a> 
 
 {% endblock %}

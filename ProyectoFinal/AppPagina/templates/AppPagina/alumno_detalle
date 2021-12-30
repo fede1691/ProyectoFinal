@@ -22,7 +22,10 @@
     </div>
 
     </body>
-    <a class="btn" href="{% url 'ListaAlumnos'%}">  Mostrar Alumnos </a> 
+    <a href="{% url 'ListaAlumnos'%}">
+      <input type="button" value="Mostrar Alumnos"/>
+    </a>    
+    
     </html>
 
 {% endblock %}

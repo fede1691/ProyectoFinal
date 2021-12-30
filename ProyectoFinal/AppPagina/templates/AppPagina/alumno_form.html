@@ -6,29 +6,29 @@
 
 <form action="" method="POST"> {% csrf_token %}
 
-    <div class="container d-flex align-items-center flex-column">
-        <table>
+    <div>
+        <table style="margin: auto;">
 
-            {{ form.as_p }}
+            {{ form }}
         
         </table>
         <input type="submit", value="ENVIAR" >
+        
+        <br><br>
+    
+        <a href="{% url 'ListaAlumnos'%}">
+          <input type="button" value="Mostrar Alumnos"/>
+        </a>
+        
+        <br><br>
 
-{% comment %}  
-        <a class="btn" href="{% url 'Detail'%}"> Buscar Cursos </a>
-        <br>
-        <a class="btn" href="{% url 'CrearAlumno'%}">  Cursos </a> {% endcomment %}
-        {% comment %} <a class="btn" href="{% url 'EditarCursos'%}"> Editar Cursos </a> {% endcomment %}
-   
+        <a href="{% url 'BusquedaAlumno'%}">
+          <input type="button" value=" Buscar Alumnos"/>
+        </a>
     </div>
     
-    <br><br>
-
-    <a class="boton" href="{% url 'ListaAlumnos'%}">  Mostrar Alumnos </a> 
     
-    <br><br>
-
-    <a class="boton" href="{% url 'BusquedaAlumno'%}">  Buscar Alumnos </a> 
+    
 
 
 
