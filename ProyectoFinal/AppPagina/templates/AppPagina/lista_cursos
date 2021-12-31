@@ -17,9 +17,6 @@
 
                <p style="font-size: large; padding: auto; padding-top: 2rem;">Nombre: {{ curso.nombre }} </p> <br>
             
-                   {% comment %}  <a href="{% url 'ListaCursos' curso.id %}">Ver</a> {% endcomment %}
-               {% comment %}  <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a> {% endcomment %}
-
                 <a href="{% url 'DetalleCursos' curso.id%}">
                   <input type="button" value="Detalle del curso" />
                 </a>

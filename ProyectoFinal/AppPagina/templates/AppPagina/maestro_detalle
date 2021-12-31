@@ -21,7 +21,7 @@
 
         </ul>
     </div>
-    <a href="{% url 'ListMaestro'%}">
+    <a href="{% url 'ListaMaestro'%}">
       <input type="button" value="Mostrar Maestros"/>
     </a>  
     

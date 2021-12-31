@@ -18,68 +18,72 @@ def saludo(request):
 
     return render(request, "AppPagina/saludo.html")
 
-########################### FUNCIONES PARA BORRAR DATOS DE MODELS#############################################
 
-def eliminarCursos(request, curso_nombre):
- 
-    curso = Curso.objects.get(nombre=curso_nombre) # Trae todos los cursos y todos sus objetos.   
-    
-    curso.delete() 
-    
-    cursos = Curso.objects.all()
-   
-    contexto = {"cursos":cursos}
-    
-    return render(request, "AppPagina/leerCursos", contexto)
-
-########################### FUNCIONES PARA EDITAR DATOS DE MODELS#############################################
-
-""" def editarCursos(request, curso_nombre):
- 
-    curso = Curso.objects.get(nombre=curso_nombre) # Trae todos los cursos y todos sus objetos.   
-    
-    if request.method == 'POST':
-
-        miFormulario = CursoFormulario(request.POST)
-
-        if miFormulario.is_valid():
-
-            informacion = miFormulario.cleaned_data
-
-            curso.nombre = informacion['nombre'], 
-            curso.comision = informacion['comision']
-
-            curso.save()
-
-            return render(request, "AppPagina/inicio.html")
-    else:
-
-        miFormulario = CursoFormulario(initial={'nombre':curso.nombre, 'comision':curso.comision})
-
-    return render(request, "AppPagina/editarCursos", {"miFormulario":miFormulario, "curso_nombre":curso_nombre}) """
 
 ########## FUNCIONES DE BUSQUEDA ##################
 
+## ALUMNO ##
 
 def busquedaAlumno(request):
 
-    return render (request, "AppPagina/busquedaAlumno.html")
+    return render (request, "AppPagina/busqueda_alumno.html")
 
-def buscar(request):
+def buscarAlumno(request):
 
     if request.GET['nombre']:
 
         nombre = request.GET['nombre']
-        alumnos = Alumno.objects.filter(nombre=nombre)
+        alumnos = Alumno.objects.filter(nombre__icontains= nombre)
         error = ''
-        return render(request, "AppPagina/resultadoBusquedaAlumnos.html", {"alumnos": alumnos, "nombre": nombre})
+        return render(request, "AppPagina/resultado_busqueda_alumnos.html", {"alumnos": alumnos, "nombre": nombre})
     
     else:
 
         error = "El alumno no se encuentra en la lista o no enviaste datos para buscar"    
 
-    return render(request, "AppPagina/busquedaAlumno.html" ,{'error': error})
+    return render(request, "AppPagina/busqueda_alumno.html" ,{'error': error})
 
+## CURSO ##
+
+def busquedaCurso(request):
+
+    return render (request, "AppPagina/busqueda_curso.html")
+
+def buscarCurso(request):
+
+    if request.GET['nombre']:
+
+        nombre = request.GET['nombre']
+        cursos = Curso.objects.filter(nombre__icontains= nombre)
+        error = ''
+        return render(request, "AppPagina/resultado_busqueda_cursos.html", {"cursos": cursos, "nombre": nombre})
+    
+    else:
+
+        error = "El curso no se encuentra en la lista o no enviaste datos para buscar"    
+
+    return render(request, "AppPagina/busqueda_curso.html" ,{'error': error})
+
+## MAESTRO ##
+
+def busquedaMaestro(request):
+
+    return render (request, "AppPagina/busqueda_maestro.html")
+
+def buscarMaestro(request):
+
+    if request.GET['nombre']:
+
+        nombre = request.GET['nombre']
+        maestros = Maestro.objects.filter(nombre__icontains= nombre)
+        error = ''
+        return render(request, "AppPagina/resultado_busqueda_maestros.html", {"cursos": maestros, "nombre": nombre})
+    
+    else:
+
+        error = "El maestro no se encuentra en la lista o no enviaste datos para buscar"    
+
+    return render(request, "AppPagina/busqueda_maestro.html" ,{'error': error})
 
 
 ######################## CLASES BASADAS EN VISTAS ---CBV---  ############################################################  
@@ -141,12 +145,12 @@ class DetalleMaestro(DetailView):
     model = Maestro
     template_name = "AppPagina/maestro_detalle"
     
-class NuevoMaestro(CreateView):
+class CrearMaestro(CreateView):
     model = Maestro
     success_url = "/AppPagina/maestro/lista"
     fields = ['nombre', 'apellidos', 'nacimiento', 'sexo', 'titulo']
 
-class ActualizaMaestro(UpdateView):
+class EditarMaestro(UpdateView):
     model = Maestro
     success_url = "/AppPagina/maestro/lista"
     fields = ['nombre', 'apellidos', 'nacimiento', 'sexo', 'titulo']

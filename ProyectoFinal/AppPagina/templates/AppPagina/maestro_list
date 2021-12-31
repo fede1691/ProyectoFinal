@@ -17,21 +17,18 @@
                
                <p>Nombre Completo: {{ maestro.nombre }} {{ maestro.apellidos }} </p> 
            
-            
-               {% comment %}  <a href="{% url 'ListaCursos' alumno.id %}">Ver</a> {% endcomment %}
-               {% comment %}  <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a> {% endcomment %}
-               
-               <a href="{% url 'DetailMaestro' maestro.id%}">
+                         
+               <a href="{% url 'DetalleMaestro' maestro.id%}">
                 <input type="button" value="Mas detalles" />
               </a>
               
               
-              <a href="{% url 'DeleteMaestro' maestro.id%}">
+              <a href="{% url 'BorrarMaestro' maestro.id%}">
                   <input type="button" value="Eliminar" />
               </a>
                           
               
-              <a href="{% url 'EditMaestro' maestro.id%}">
+              <a href="{% url 'EditarMaestro' maestro.id%}">
                 <input type="button" value="Editar" />
               </a>
               <br>----------------------------------------------------------
@@ -40,7 +37,7 @@
         </ul>
     </div>
 
-    <a href="{% url 'NewMaestro'%}">
+    <a href="{% url 'CrearMaestro'%}">
       <input type="button" value="Nuevo Maestro"/>
     <a> 
      
