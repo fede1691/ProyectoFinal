@@ -1,0 +1,32 @@
+{% extends "AppPagina/padre.html" %}
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    <h1>RESULTADO DE LA BUSQUEDA</h1>
+
+    {% if cursos %}
+
+        <ul>
+            {% for curso in cursos %}
+            ----------------------------   
+            <li>Nombre: {{curso.nombre}}</li>
+            <li>Comision: {{curso.comision}}</li>
+            ----------------------------
+            <br>
+          
+            {% endfor%}
+        </ul>
+    
+        <a href="{% url 'Inicio' %}">
+          <input type="button" value="Regresar al Inicio"/>
+        </a>
+        
+        <a href="{% url 'BusquedaCurso' %}">
+          <input type="button" value="Regresar a busqueda"/>
+        </a>
+
+    {%endif %}
+
+{% endblock %}

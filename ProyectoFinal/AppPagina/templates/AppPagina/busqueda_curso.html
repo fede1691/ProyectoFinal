@@ -1,4 +1,4 @@
-{% extends "AppPagina/busquedaAlumno.html" %}
+{% extends "AppPagina/padre.html" %}
 {% load static %}
 
 
@@ -8,7 +8,7 @@
     <h1>Busqueda Curso!!!</h1>
 
 
-<form action="/AppPagina/buscar/" method="GET">
+<form action="/AppPagina/buscarCurso/" method="GET">
 
     <input type="text" name="nombre" id="nombre">
 
@@ -21,4 +21,7 @@
       <p>{{ error }}</p>
     {% endif %}
     
+    <a href="{% url 'CrearCurso'%}">
+      <input type="button" value="Volver"/>
+    </a> 
 {% endblock %}

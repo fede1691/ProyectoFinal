@@ -1,0 +1,35 @@
+{% extends "AppPagina/padre.html" %}
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+    <h1>RESULTADO DE LA BUSQUEDA</h1>
+
+    {% if maestros %}
+
+        <ul>
+            {% for maestro in maestros %}
+            ----------------------------   
+            <li>Nombre: {{maestro.nombre}}</li>
+            <li>Apellidos: {{maestro.apellidos}}</li>
+            <li>Nacimiento: {{maestro.nacimiento}}</li>
+            <li>Sexo: {{maestro.sexo}}</li>
+            <li>Titulo: {{maestro.titulo}}</li>
+            ----------------------------
+            <br>
+          
+            {% endfor%}
+        </ul>
+    
+        <a href="{% url 'Inicio' %}">
+          <input type="button" value="Regresar al Inicio"/>
+        </a>
+        
+        <a href="{% url 'BusquedaCurso' %}">
+          <input type="button" value="Regresar a busqueda"/>
+        </a>
+
+    {%endif %}
+
+{% endblock %}
