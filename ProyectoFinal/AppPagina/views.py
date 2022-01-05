@@ -3,11 +3,14 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.template import Template, context, loader
 
-from AppPagina.forms import CursoFormulario, AlumnoFormulario, MaestroFormulario
+from AppPagina.forms import CursoFormulario, AlumnoFormulario, MaestroFormulario, RegistroFormulario
 from AppPagina.models import Curso, Alumno, Maestro
 from django.views.generic import ListView # Importamos la librerias para poder manejar las CBV
 from django.views.generic.detail import DetailView  # Importamos la librerias para poder manejar las CBV
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+from django.views.decorators.csrf import csrf_exempt
 
 def inicio(request):
 
@@ -184,3 +187,49 @@ class ActualizaAlumno(UpdateView):
 class BorrarAlumno(DeleteView):
     model = Alumno
     success_url = "/AppPagina/alumno/lista"
+    
+    
+############################ VISTA DE LOGIN#################################
+@csrf_exempt
+def login(request):
+    
+    if request.method == "POST": # Verificamos si el method request is POST, si es TRUE hacemos....
+        form= AuthenticationForm(request, data = request.POST)
+        
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contrasena = form.cleaned_data.get('password')
+            
+            user = authenticate(username=usuario, password=contrasena)
+            
+            if user is not None:
+                login(request, user)
+                return render(request, "AppPagina/inicio.html", {"mensaje":f"Bienvenido {usuario}"})
+            else:
+                return render(request, "AppPagina/inicio.html", {"mensaje": "datos incorrectos"})
+        else:
+            return render(request, "AppPagina/inicio.html", {"mensaje":"Error, verifica datos"})
+        
+        
+        
+        
+    form = AuthenticationForm()  # Se genera un formulario vacio si se genera un POST vacio
+    return render(request, "AppPagina/login.html", {"form":form})
+        
+        
+############################ VISTA DE SIGN UP#################################
+@csrf_exempt
+def signup(request):
+    
+    if request.method == "POST": # Verificamos si el method request is POST, si es TRUE hacemos....
+        
+        form= RegistroFormulario(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request, "AppPagina/inicio.html", {"mensaje":f"{username} creado exitosamente"})
+    
+    else:
+        form = UserCreationForm()
+    
+    return render(request, "AppPagina/signup.html", {"form":form})

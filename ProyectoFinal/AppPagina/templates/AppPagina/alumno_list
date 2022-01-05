@@ -14,9 +14,9 @@
 
             {% for alumno in object_list %}
 
-
+                &nbsp;&nbsp;
                <p>Nombre Completo: {{ alumno.nombre }} {{ alumno.apellidos }} </p> 
-           
+    
             
                    {% comment %}  <a href="{% url 'ListaCursos' alumno.id %}">Ver</a> {% endcomment %}
                {% comment %}  <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a> {% endcomment %}
@@ -32,7 +32,7 @@
    
                 <a href="{% url 'EditAlumno' alumno.id%}" style="color:black;" >Editar </a>
 
-                
+        
         
 
             

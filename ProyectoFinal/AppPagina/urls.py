@@ -20,5 +20,7 @@ urlpatterns = [
     path(r'^nuevoAlumno$', views.NuevoAlumno.as_view(), name="NewAlumno"),
     path(r'^editarAlumno/(?P<pk>\d+)$', views.ActualizaAlumno.as_view(), name="EditAlumno"),
     path(r'^borrarAlumno/(?P<pk>\d+)$', views.BorrarAlumno.as_view(), name="DeleteAlumno"),
+    path('login', views.login, name="Login"),
+    path('signup', views.signup, name="SignUp")
     
 ]
