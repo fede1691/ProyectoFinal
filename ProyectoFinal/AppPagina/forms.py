@@ -27,20 +27,19 @@ class MaestroFormulario(forms.Form):
     
 
 class RegistroFormulario(UserCreationForm):
-    username = forms.CharField()
-    email= forms.EmailField()
+#    username = forms.CharField()
+#    email= forms.EmailField()
     #pass1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     #pass2 = forms.CharField(label='Repetir Contraseña', widget=forms.PasswordInput) """
     
-    last_name = forms.CharField()
-    first_name = forms.CharField()
-    image_avatar = forms.IntegerField(required=False)
+#    last_name = forms.CharField()
+#    first_name = forms.CharField()
+#    image_avatar = forms.IntegerField(required=False)
     
-    
-    #class Meta:
-    #    model = User
-    #    fields = ['username', 'email', 'last_name', 'first_name' ]
-    #    help_text = {k:"" for k in fields}
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'last_name', 'first_name' ]
+        help_text = {k:"" for k in fields}
     
    
     

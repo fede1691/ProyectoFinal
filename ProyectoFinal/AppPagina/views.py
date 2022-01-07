@@ -12,6 +12,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.csrf import csrf_exempt
 
+
 def inicio(request):
 
     return render(request, "AppPagina/inicio.html")
@@ -190,7 +191,7 @@ class BorrarAlumno(DeleteView):
     
     
 ############################ VISTA DE LOGIN#################################
-@csrf_exempt
+#@csrf_exempt
 def login(request):
     
     if request.method == "POST": # Verificamos si el method request is POST, si es TRUE hacemos....
@@ -211,14 +212,12 @@ def login(request):
             return render(request, "AppPagina/inicio.html", {"mensaje":"Error, verifica datos"})
         
         
-        
-        
     form = AuthenticationForm()  # Se genera un formulario vacio si se genera un POST vacio
-    return render(request, "AppPagina/login.html", {"form":form})
+    return render(request, "AppPagina/login.html", {'form':form})
         
         
 ############################ VISTA DE SIGN UP#################################
-@csrf_exempt
+#@csrf_exempt
 def signup(request):
     
     if request.method == "POST": # Verificamos si el method request is POST, si es TRUE hacemos....
@@ -230,6 +229,6 @@ def signup(request):
             return render(request, "AppPagina/inicio.html", {"mensaje":f"{username} creado exitosamente"})
     
     else:
-        form = UserCreationForm()
+        form = RegistroFormulario()
     
-    return render(request, "AppPagina/signup.html", {"form":form})
+        return render(request, "AppPagina/signup.html", {"form":form})
