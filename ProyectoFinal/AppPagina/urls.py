@@ -4,6 +4,8 @@ from AppPagina import views
 urlpatterns = [
     path('', views.inicio, name="Inicio"),
     path('saludo', views.saludo, name="Saludo"),
+    path('login', views.login_request, name="Login"),
+    path('registro', views.registro, name="Registro"),
 
     ## URLS BUSQUEDA ##
 
@@ -11,15 +13,15 @@ urlpatterns = [
     path('busqueda_alumno', views.busquedaAlumno, name="BusquedaAlumno"),
     path('buscarAlumno/', views.buscarAlumno, name="BuscarAlumno"),
 
-    ## CURSOS ##
-    path('busqueda_curso', views.busquedaCurso, name="BusquedaCurso"),
-    path('buscarCurso/', views.buscarCurso, name="BuscarCurso"),
-    
+        
     ## MAESTRO ##    
     
     path('busqueda_maestro', views.busquedaMaestro, name="BusquedaMaestro"),
     path('buscarMaestro/', views.buscarMaestro, name="BuscarMaestro"),
     
+    ## CURSOS ##
+    path('busquedaCurso', views.busquedaCurso, name='BusquedaCurso'),
+    path('buscarCurso/', views.buscarCurso, name='BuscarCurso'),
     ####################################################
 
 

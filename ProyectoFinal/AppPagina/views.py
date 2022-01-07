@@ -8,7 +8,8 @@ from AppPagina.models import Curso, Alumno, Maestro
 from django.views.generic import ListView # Importamos la librerias para poder manejar las CBV
 from django.views.generic.detail import DetailView  # Importamos la librerias para poder manejar las CBV
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField
+from django.contrib.auth import login,logout, authenticate
 
 def inicio(request):
 
@@ -17,6 +18,55 @@ def inicio(request):
 def saludo(request):
 
     return render(request, "AppPagina/saludo.html")
+
+def registro(request):
+    
+    if request.method == "POST":
+
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data['username']
+            form.save()
+
+            return render(request, "/AppPagina/inicio.html", {"mensaje": "Usuario Creado"})
+
+    else:
+
+        form = UserCreationForm()
+
+    return render(request, "/AppPagina/inicio.html", {"form": form})
+
+
+def login_request(request):
+
+    if request.method == "POST":
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+
+            usuario = form.cleaned_data.get('username')
+            contra = form.cleaned_data.get('password')
+
+            user = authenticate(username = usuario, password = contra)
+
+            if user is not None:
+                login(request, user)
+
+                return render(request,"AppPagina/inicio.html", {"mensaje" : f"Bienvenido/a {usuario} "})
+
+            else:
+
+                return render(request,"AppPagina/inicio.html", {"mensaje" : "Error datos incorrectos "})
+
+        else:
+
+                return render(request,"AppPagina/inicio.html", {"mensaje" : "Error formulario erroneo "})
+
+    form = AuthenticationForm()
+
+    return render(request, "AppPagina/login.html", {"form": form})
 
 
 
@@ -47,7 +97,7 @@ def buscarAlumno(request):
 
 def busquedaCurso(request):
 
-    return render (request, "AppPagina/busqueda_curso.html")
+    return render (request, "AppPagina/busquedaCurso.html")
 
 def buscarCurso(request):
 
@@ -62,7 +112,7 @@ def buscarCurso(request):
 
         error = "El curso no se encuentra en la lista o no enviaste datos para buscar"    
 
-    return render(request, "AppPagina/busqueda_curso.html" ,{'error': error})
+    return render(request, "AppPagina/busquedaCurso.html" ,{'error': error})
 
 ## MAESTRO ##
 
