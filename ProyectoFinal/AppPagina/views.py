@@ -3,14 +3,17 @@ from django.http import HttpResponse
 from datetime import datetime
 from django.template import Template, context, loader
 
-from AppPagina.forms import CursoFormulario, AlumnoFormulario, MaestroFormulario, RegistroFormulario
+from AppPagina.forms import CursoFormulario, AlumnoFormulario, MaestroFormulario, RegistroFormulario, UserEditForm
 from AppPagina.models import Curso, Alumno, Maestro
 from django.views.generic import ListView # Importamos la librerias para poder manejar las CBV
 from django.views.generic.detail import DetailView  # Importamos la librerias para poder manejar las CBV
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField
 from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 def inicio(request):
@@ -20,6 +23,10 @@ def inicio(request):
 def saludo(request):
 
     return render(request, "AppPagina/saludo.html")
+
+def about(request):
+
+    return render(request, "AppPagina/about.html")
 
 def cursoFormulario(request):
     
@@ -102,7 +109,7 @@ def leerCursos(request):
     return render(request, "AppPagina/leerCursos", contexto)
 
 ########################### FUNCIONES PARA BORRAR DATOS DE MODELS#############################################
-
+@login_required
 def eliminarCursos(request, curso_nombre):
  
     curso = Curso.objects.get(nombre=curso_nombre) # Trae todos los cursos y todos sus objetos.   
@@ -141,6 +148,25 @@ def editarCursos(request, curso_nombre):
 
     return render(request, "AppPagina/editarCursos", {"miFormulario":miFormulario, "curso_nombre":curso_nombre})
 
+@login_required
+def editarPerfil(request):
+    usuario = request.user
+    if request.method == 'POST':
+        miFormulario = UserEditForm(request.POST)
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+            
+            usuario.save()
+            return render(request, "AppPagina/inicio.html")
+    else:
+        miFormulario = UserEditForm(initial={'email':usuario.email})
+    
+    return render(request, "AppPagina/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
+
+
 ######################## CLASES BASADAS EN VISTAS ---CBV---  ############################################################
 
 ######################## CBVs CURSO ##################################
@@ -152,17 +178,17 @@ class DetalleCursos(DetailView):
     model = Curso
     template_name = "AppPagina/curso_detalle"
     
-class CreacionCursos(CreateView):
+class CreacionCursos(LoginRequiredMixin,CreateView):
     model = Curso
     success_url = "/AppPagina/curso/lista"
     fields = ['nombre', 'comision']
 
-class ActualizaCursos(UpdateView):
+class ActualizaCursos(LoginRequiredMixin,UpdateView):
     model = Curso
     success_url = "/AppPagina/curso/lista"
     fields = ['nombre', 'comision']
     
-class BorrarCursos(DeleteView):
+class BorrarCursos (LoginRequiredMixin, DeleteView):
     model = Curso
     success_url = "/AppPagina/curso/lista"
 
@@ -175,24 +201,24 @@ class DetalleAlumno(DetailView):
     model = Alumno
     template_name = "AppPagina/alumno_detalle"
     
-class NuevoAlumno(CreateView):
+class NuevoAlumno(LoginRequiredMixin,CreateView):
     model = Alumno
     success_url = "/AppPagina/alumno/lista"
     fields = ['nombre', 'apellidos', 'nacimiento', 'sexo']
 
-class ActualizaAlumno(UpdateView):
+class ActualizaAlumno(LoginRequiredMixin,UpdateView):
     model = Alumno
     success_url = "/AppPagina/alumno/lista"
     fields = ['nombre', 'apellidos', 'nacimiento', 'sexo']
     
-class BorrarAlumno(DeleteView):
+class BorrarAlumno(LoginRequiredMixin,DeleteView):
     model = Alumno
     success_url = "/AppPagina/alumno/lista"
     
     
 ############################ VISTA DE LOGIN#################################
 #@csrf_exempt
-def login(request):
+def login_request(request):
     
     if request.method == "POST": # Verificamos si el method request is POST, si es TRUE hacemos....
         form= AuthenticationForm(request, data = request.POST)
@@ -217,6 +243,23 @@ def login(request):
         
         
 ############################ VISTA DE SIGN UP#################################
+#@csrf_exempt
+def signup(request):
+    
+    if request.method == "POST": # Verificamos si el method request is POST, si es TRUE hacemos....
+        
+        form= RegistroFormulario(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request, "AppPagina/inicio.html", {"mensaje":f"{username} creado exitosamente"})
+    
+    else:
+        form = RegistroFormulario()
+    
+        return render(request, "AppPagina/signup.html", {"form":form})
+
+############################ VISTA DE LOGOUT#################################
 #@csrf_exempt
 def signup(request):
     

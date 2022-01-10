@@ -21,8 +21,13 @@ urlpatterns = [
     path(r'^nuevoAlumno$', views.NuevoAlumno.as_view(), name="NewAlumno"),
     path(r'^editarAlumno/(?P<pk>\d+)$', views.ActualizaAlumno.as_view(), name="EditAlumno"),
     path(r'^borrarAlumno/(?P<pk>\d+)$', views.BorrarAlumno.as_view(), name="DeleteAlumno"),
-    path('login', views.login, name="Login"),
+    path('login', views.login_request, name="Login"),
     path('signup', views.signup, name="SignUp"),
     path('logout', LogoutView.as_view(template_name='AppPagina/logout.html'), name='Logout'),
+    path('editarPerfil', views.editarPerfil, name='EditarPerfil'),
+    path('about', views.about, name="About"),
+    
+    
+    
     
 ]
