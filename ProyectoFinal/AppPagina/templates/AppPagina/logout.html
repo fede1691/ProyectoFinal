@@ -7,12 +7,10 @@
 <form action="" method="POST"> {% csrf_token %}
 
     <div class="container d-flex align-items-center flex-column">
-        <table>
 
-            {{ form.as_p }}
-        
-        </table>
-        <input type="submit", value="ENVIAR" >
+
+        <h1 class="masthead-heading text-uppercase mb-0">Hasta luego</h1>
+        <h1>{{mensaje}}</h1>
 
 {% comment %}  
         <a class="btn" href="{% url 'Detail'%}"> Buscar Cursos </a>

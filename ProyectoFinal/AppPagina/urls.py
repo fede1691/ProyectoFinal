@@ -1,11 +1,15 @@
 from django.urls import path
 from AppPagina import views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', views.inicio, name="Inicio"),
     path('saludo', views.saludo, name="Saludo"),
     path('login', views.login_request, name="Login"),
-    path('registro', views.registro, name="Registro"),
+    path('signup', views.signup, name="SignUp"),
+    path('logout', LogoutView.as_view(template_name='AppPagina/logout.html'), name='Logout'),
+    path('editarPerfil', views.editarPerfil, name='EditarPerfil'),
+    path('about', views.about, name="About"),
 
     ## URLS BUSQUEDA ##
 
@@ -43,7 +47,6 @@ urlpatterns = [
     
 
     ## MAESTROS ##
-    
     path('maestro/lista', views.ListaMaestro.as_view(), name="ListaMaestro"),
     path(r'^detalleMaestro/(?P<pk>\d+)$', views.DetalleMaestro.as_view(), name="DetalleMaestro"),
     path(r'^nuevoMaestro$', views.CrearMaestro.as_view(), name="CrearMaestro"),
