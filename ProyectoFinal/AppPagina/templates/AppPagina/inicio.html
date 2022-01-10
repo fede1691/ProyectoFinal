@@ -13,4 +13,25 @@
     <p class="masthead-subheading font-weight-light mb-0">Aprendiendo Django </p>
 </div>
 
+
+@login_required
+def inicio(request):
+
+    avatares = Avatar.objects.filter(user=request.user.id)
+
+    return render(request, "AppPagina/inicio.html", {"url": avatares[0]. imagen.url})
+
+</div>
+<div class="text-center">
+    <img height="30px" src="{{url}}">
+    <h3>Hola {{user.username}}</h3>
+</div>
+
+{% block contenido 2 %}
+<h1 class="mb-1">Avatar</h1>
+    {% if request.user.is_authenticated%}
+    <img src="{{ avatar }}" alt="">
+    {% endblock}
+
+
 {% endblock %}
