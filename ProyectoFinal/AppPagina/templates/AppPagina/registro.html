@@ -1,0 +1,20 @@
+{% extends "AppPagina/padre.html" %}
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+<body>
+    
+<h2>CREACION DE USUARIO</h2><br><br>
+
+<form action="" method="POST"> {% csrf_token %}    
+
+    {{form.as_p}}
+
+    <button type="submit">Registrarse</button> 
+</form>
+
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "AppPagina/padre.html" %}
+#{% load static %}
+
+
+#{% block contenidoQueCambia %}
+
+<h1> Editar Perfil de Usuario </h1>
+
+<form action="" method="POST"> {% csrf_token %}
+
+    <div class="container d-flex align-items-center flex-column">
+        <table>
+
+            {{ miFormulario.as_table }}
+        
+        </table>
+        <input type="submit", value="EDITAR" >
+
+{% comment %}  
+        <a class="btn" href="{% url 'Detail'%}"> Buscar Cursos </a>
+        <br>
+        <a class="btn" href="{% url 'New'%}">  Cursos </a> {% endcomment %}
+        {% comment %} <a class="btn" href="{% url 'EditarCursos'%}"> Editar Cursos </a> {% endcomment %}
+   
+    </div>  
+{% endblock %} 
