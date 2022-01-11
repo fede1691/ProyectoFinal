@@ -215,6 +215,28 @@ class BorrarAlumno(LoginRequiredMixin,DeleteView):
     model = Alumno
     success_url = "/AppPagina/alumno/lista"
     
+######################## CBVs MAESTRO ##################################
+class ListaMaestro(ListView):
+    model = Maestro
+    template_name = "AppPagina/maestro_list"
+
+class DetalleMaestro(DetailView):
+    model = Maestro
+    template_name = "AppPagina/maestro_detalle"
+    
+class NuevoMaestro(LoginRequiredMixin,CreateView):
+    model = Maestro
+    success_url = "/AppPagina/maestro/lista"
+    fields = ['nombre', 'apellidos', 'nacimiento', 'sexo', 'titulo']
+
+class ActualizaMaestro(LoginRequiredMixin,UpdateView):
+    model = Maestro
+    success_url = "/AppPagina/maestro/lista"
+    fields = ['nombre', 'apellidos', 'nacimiento', 'sexo', 'titulo']
+    
+class BorrarMaestro(LoginRequiredMixin,DeleteView):
+    model = Maestro
+    success_url = "/AppPagina/maestro/lista"    
     
 ############################ VISTA DE LOGIN#################################
 #@csrf_exempt

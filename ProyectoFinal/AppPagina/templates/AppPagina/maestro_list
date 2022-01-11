@@ -1,0 +1,47 @@
+{% extends "AppPagina/padre.html" %}
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+
+    <body>
+        <!-- Navigation-->
+    </div>
+
+        <h2> Lista de Maestros </h2>
+        <ul> 
+
+            {% for maestro in object_list %}
+
+
+               <p>Nombre: {{ maestro.nombre }} </p> 
+            
+                   {% comment %}  <a href="{% url 'ListaCursos' curso.id %}">Ver</a> {% endcomment %}
+               {% comment %}  <a class="btn" href="{% url 'LeerCursos'%}"> Buscar Cursos </a> {% endcomment %}
+
+               <button>
+                <a href="{% url 'DetailMaestro' maestro.id%}"> Detalle-CBV </a>
+                </button>
+
+                <button>
+                <a href= "{% url 'DeleteMaestro' maestro.id%}" > Eliminar-CBV </a>
+                
+                </button>
+                <button>
+                <a href="{% url 'EditMaestro' maestro.id%}"> Editar-CBV </a>
+                </button>
+                
+        
+
+            
+            {% endfor %}
+        </ul>
+    </div>
+    <a class="btn" href="{% url 'NewMaestro'%}">  Nuevo Maestro </a> 
+    </body>
+    </html>
+
+{% endblock %}
+
+

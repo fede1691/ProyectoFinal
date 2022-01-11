@@ -1,0 +1,29 @@
+{% extends "AppPagina/padre.html" %}
+{% load static %}
+
+
+{% block contenidoQueCambia %}
+
+<form action="" method="POST"> {% csrf_token %}
+
+    <div class="container d-flex align-items-center flex-column">
+        <table>
+
+            {{ form.as_p }}
+        
+        </table>
+        <input type="submit", value="ENVIAR" >
+
+{% comment %}  
+        <a class="btn" href="{% url 'Detail'%}"> Buscar Cursos </a>
+        <br>
+        <a class="btn" href="{% url 'New'%}">  Cursos </a> {% endcomment %}
+        {% comment %} <a class="btn" href="{% url 'EditarCursos'%}"> Editar Cursos </a> {% endcomment %}
+   
+    </div>  
+ 
+    <a class="btn" href="{% url 'ListMaestro'%}">  Mostrar Maestros </a> 
+
+
+ 
+{% endblock %}
