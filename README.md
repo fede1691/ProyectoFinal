@@ -181,9 +181,9 @@ _El proyecto se ha realizado utilizando:_
 
 _Aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
-* **Federico Gómez Catuogno** - *Código* - [Fede](https://github.com/fede1691)
-* **Diego Nicolas Dasanbiagio** - *Código* - [Nico](https://github.com/)
-* **Eliud Bueno Moreno** - *Código* - [xe2mbe](https://github.com/xe2mbe)
+* **Federico Gómez Catuogno** - *Código: CSS, Menu, Login, Módulo Alumnos* - [Fede](https://github.com/fede1691)
+* **Diego Nicolas Dasanbiagio** - *Código: CSS, Menu, Logout, Móludo Cursos* - [Nico](https://github.com/)
+* **Eliud Bueno Moreno** - *Código:CSS, Menu, SignUp, Móludlo Maestros* - [xe2mbe](https://github.com/xe2mbe)
  
 
 ## Licencia 📄
