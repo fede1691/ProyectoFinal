@@ -49,7 +49,10 @@ class UserEditForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ['username','email', 'password1', 'password2', 'last_name', 'first_name']
+        fields = ['last_name', 'first_name']
         help_text = {k:"" for k in fields}
-    
+"""     class Meta:
+        model = User
+        fields = ['username','email', 'password1', 'password2', 'last_name', 'first_name']
+        help_text = {k:"" for k in fields} """
     

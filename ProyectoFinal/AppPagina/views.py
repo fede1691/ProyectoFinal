@@ -224,17 +224,17 @@ class DetalleMaestro(DetailView):
     model = Maestro
     template_name = "AppPagina/maestro_detalle"
     
-class NuevoMaestro(LoginRequiredMixin,CreateView):
+class NuevoMaestro(CreateView):
     model = Maestro
     success_url = "/AppPagina/maestro/lista"
     fields = ['nombre', 'apellidos', 'nacimiento', 'sexo', 'titulo']
 
-class ActualizaMaestro(LoginRequiredMixin,UpdateView):
+class ActualizaMaestro(UpdateView):
     model = Maestro
     success_url = "/AppPagina/maestro/lista"
     fields = ['nombre', 'apellidos', 'nacimiento', 'sexo', 'titulo']
     
-class BorrarMaestro(LoginRequiredMixin,DeleteView):
+class BorrarMaestro(DeleteView):
     model = Maestro
     success_url = "/AppPagina/maestro/lista"    
     
@@ -281,19 +281,3 @@ def signup(request):
     
         return render(request, "AppPagina/signup.html", {"form":form})
 
-############################ VISTA DE LOGOUT#################################
-#@csrf_exempt
-def signup(request):
-    
-    if request.method == "POST": # Verificamos si el method request is POST, si es TRUE hacemos....
-        
-        form= RegistroFormulario(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            form.save()
-            return render(request, "AppPagina/inicio.html", {"mensaje":f"{username} creado exitosamente"})
-    
-    else:
-        form = RegistroFormulario()
-    
-        return render(request, "AppPagina/signup.html", {"form":form})
